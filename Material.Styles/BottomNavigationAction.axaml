@@ -1,0 +1,61 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ripple="clr-namespace:Material.Ripple;assembly=Material.Ripple"
+        xmlns:cc="clr-namespace:Material.Styles">
+  <Style Selector="cc|BottomNavigationAction">
+    <Setter Property="Height" Value="56"/>
+    <Setter Property="MinWidth" Value="80"/>
+    <Setter Property="MaxWidth" Value="168"/> 
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate>
+          <Border Background="{TemplateBinding Background}"
+                  MinWidth="80" Height="56"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch"> 
+            <ripple:RippleEffect>
+              <StackPanel Name="ContentRoot"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Stretch" >
+                <ContentPresenter HorizontalAlignment="Center" Margin="2"
+                                  Content="{TemplateBinding Icon}"/>
+                <TextBlock Text="{TemplateBinding Header}"
+                           HorizontalAlignment="Center"
+                           Classes="Caption" Margin="2"
+                           Foreground="{TemplateBinding Foreground}"/>
+              </StackPanel>
+            </ripple:RippleEffect>
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style Selector="cc|BottomNavigationAction"> 
+    <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidBrush}" /> 
+  </Style>
+  <Style Selector="cc|BottomNavigationAction /template/ StackPanel#ContentRoot">
+    <Setter Property="Opacity" Value="0.5"/>
+  </Style>
+  <Style Selector="cc|BottomNavigationAction Path">
+    <Setter Property="Fill" Value="{DynamicResource PrimaryHueMidBrush}" />
+  </Style>
+  <Style Selector="cc|BottomNavigationAction:selected /template/ StackPanel#ContentRoot">
+    <Setter Property="Opacity" Value="1"/>
+  </Style>
+
+
+
+  <Design.PreviewWith>
+    <Border Margin="40" BorderThickness="1" BorderBrush="Black">
+      <Border.Resources>
+        <StreamGeometry x:Key="Material.Home">M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z</StreamGeometry>
+      </Border.Resources> 
+      <cc:BottomNavigationAction Header="Test 1" Width="120">
+        <cc:BottomNavigationAction.Icon>
+          <Path Data="{StaticResource Material.Home}" />
+        </cc:BottomNavigationAction.Icon>
+      </cc:BottomNavigationAction> 
+    </Border>
+  </Design.PreviewWith>
+</Styles>

@@ -1,0 +1,66 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cc="clr-namespace:Material.Styles"
+    xmlns:assists="clr-namespace:Material.Styles.Assists">
+  <Style Selector="cc|BottomNavigation">
+    <Setter Property="Mode" Value="Standard"/>
+    <Setter Property="VerticalAlignment" Value="Stretch"/>
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate>
+          <DockPanel VerticalAlignment="Stretch"
+                     HorizontalAlignment="Stretch"
+                     ClipToBounds="False"> 
+            <cc:Card Name="Root" Grid.Row="1"
+                     CornerRadius="0"
+                     assists:ShadowAssist.ShadowDepth="Depth2"
+                     DockPanel.Dock="Bottom" ZIndex="1"
+                     HorizontalAlignment="Stretch"
+                     Height="56" >
+              <Grid HorizontalAlignment="Stretch">
+                <ItemsPresenter Name="PART_ItemsPresenter"
+                                Items="{TemplateBinding Items}"
+                                ItemTemplate="{TemplateBinding ItemTemplate}">
+                  <ItemsPresenter.ItemsPanel>
+                    <ItemsPanelTemplate>
+                      <UniformGrid Columns="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ItemCount}"/>
+                    </ItemsPanelTemplate>
+                  </ItemsPresenter.ItemsPanel>
+                </ItemsPresenter>
+              </Grid>
+            </cc:Card>
+            <Border DockPanel.Dock="Bottom" Name="PART_SelectedContentHostBorder" >
+              <ContentPresenter Name="PART_SelectedContentHost"
+                                Content="{TemplateBinding SelectedContent}" />
+            </Border>
+          </DockPanel>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>  
+ 
+ 
+  <Design.PreviewWith>
+    <Border Margin="40" BorderThickness="1" BorderBrush="Black">
+      <Border.Resources>
+        <StreamGeometry x:Key="Material.Home">M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z</StreamGeometry>
+      </Border.Resources>
+      <cc:BottomNavigation Width="640" 
+                           Height="300" >
+        <cc:BottomNavigation.Items>
+          <cc:BottomNavigationAction Header="Test 1">
+            <cc:BottomNavigationAction.Icon>
+              <Path Data="{StaticResource Material.Home}" />
+            </cc:BottomNavigationAction.Icon>
+          </cc:BottomNavigationAction>
+          <cc:BottomNavigationAction Header="Test 2">
+            <cc:BottomNavigationAction.Icon>
+              <Path Data="{StaticResource Material.Home}" />
+            </cc:BottomNavigationAction.Icon>
+          </cc:BottomNavigationAction>
+        </cc:BottomNavigation.Items>
+      </cc:BottomNavigation>
+    </Border>
+  </Design.PreviewWith>
+</Styles>
