@@ -1,3 +1,5 @@
+> This repository has archived. For use Material Design in AvaloniaUI, use [OFFICIAL REPOSITORY](https://github.com/AvaloniaUtils/material.avalonia/tree/dev) instead!
+
 # material.avalonia
 
 <img src="/Banner.svg" width="1280" height="480">
